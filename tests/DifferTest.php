@@ -21,8 +21,8 @@ class DifferTest extends TestCase
         return trim((string) file_get_contents($this->fixture($name)));
     }
 
-    // Шаг «Автоматическое тестирование и CI» требует тестов именно на плоских
-    // json-файлах — с них начинается сравнение, и на них ломается порядок ключей.
+    // The "tests and CI" step asks for tests on flat json files specifically:
+    // comparison starts there, and key ordering breaks there first.
     public function testFlatJson(): void
     {
         $actual = genDiff($this->fixture('flat1.json'), $this->fixture('flat2.json'));
@@ -75,8 +75,8 @@ class DifferTest extends TestCase
     {
         $actual = genDiff($this->fixture($first), $this->fixture($second), $format);
 
-        // У json-формата значим не текст, а структура: отступы и порядок пробелов
-        // ничего не решают, поэтому сравниваем разобранные данные.
+        // For the json format the structure matters, not the text: indentation
+        // decides nothing, so compare the decoded data.
         if ($format === 'json') {
             $this->assertEquals(
                 json_decode($this->expected('diff.json'), true, 512, JSON_THROW_ON_ERROR),
