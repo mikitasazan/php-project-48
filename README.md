@@ -1,38 +1,50 @@
 # Вычислитель отличий (PHP)
 
-[![hexlet-check](https://github.com/mikitasazan/php-project-48/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mikitasazan/php-project-48/actions)
+[![hexlet-check](https://github.com/mikitasazan/php-project-48/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/mikitasazan/php-project-48/actions/workflows/hexlet-check.yml)
+[![main](https://github.com/mikitasazan/php-project-48/actions/workflows/main.yml/badge.svg)](https://github.com/mikitasazan/php-project-48/actions/workflows/main.yml)
 
-В этом проекте отрабатывается работа с коллекциями. Изучаются способы построения и обхода деревьев. Вы познакомитесь с разными форматами данных (json, yml), научитесь их парсить и формировать. Начнете писать тесты (PHPUnit) и освоите разработку через них. Познакомитесь с непрерывной интеграцией (CI) и элементами экстремального программирования (XP). Прокачаете ООП мышление.
+Программа сравнивает два файла с настройками и показывает, чем они отличаются:
+что появилось, что пропало, что поменяло значение. Понимает JSON и YAML,
+вложенность любой глубины.
 
-Учебный проект Хекслета: https://ru.hexlet.io/programs/php
-Как это должно работать: https://asciinema.org/a/Pe6QypnLEmFWssNAjCOJN1iii
+## Требования
 
-## Стек
-
-- PHP
+- PHP 8.1 или новее
+- Composer, доступный глобально командой `composer`
 
 ## Установка
-
-<!-- Опишите установку: клонирование, зависимости, переменные окружения -->
 
 ```bash
 git clone https://github.com/mikitasazan/php-project-48.git
 cd php-project-48
+make install
 ```
 
-## Использование
+## Запуск
 
-<!-- Добавьте примеры запуска и запись asciinema — именно это смотрит работодатель -->
+```bash
+./bin/gendiff first.json second.json
+./bin/gendiff --format plain first.yaml second.yaml
+./bin/gendiff --format json first.json second.json
+./bin/gendiff --help
+```
 
----
+## Форматы вывода
 
-<details>
-<summary>Автоматические тесты Хекслета</summary>
+| Формат | Что даёт |
+|---|---|
+| `stylish` (по умолчанию) | дерево с отметками `+` и `-` у изменившихся строк |
+| `plain` | список изменений фразами: что добавлено, удалено, обновлено |
+| `json` | то же дерево машиночитаемо, чтобы отдать другой программе |
 
-Тесты запускаются на каждый коммит. За запуск отвечает файл `.github/workflows/hexlet-check.yml` — не удаляйте и не переименовывайте ни его, ни репозиторий.
+## Разработка
 
-</details>
+```bash
+make lint           # PSR-12 по bin, src и tests
+make test           # тесты PHPUnit
+make test-coverage  # тесты и порог покрытия (COVERAGE_MIN, по умолчанию 80)
+```
 
-## О Хекслете
+## Записи прохождения
 
-[Хекслет](https://ru.hexlet.io/) — школа программирования: авторские программы обучения с практикой, поддержкой наставников и реальными проектами, которые остаются в резюме. Этот репозиторий — один из таких проектов.
+Аскинемы пока нет — её записывает владелец репозитория со своей машины.

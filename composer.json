@@ -1,0 +1,29 @@
+{
+  "name": "hexlet/code",
+  "description": "Calculates the diff between two configuration files",
+  "version": "1.0.0",
+  "minimum-stability": "stable",
+  "type": "library",
+  "bin": [
+    "bin/gendiff"
+  ],
+  "autoload": {
+    "files": [
+      "src/Formatters/Stylish.php",
+      "src/Formatters/Plain.php",
+      "src/Formatters/Json.php",
+      "src/Parsers.php",
+      "src/Formatters.php",
+      "src/Differ.php"
+    ]
+  },
+  "require": {
+    "php": ">=8.1",
+    "docopt/docopt": "^1.0",
+    "symfony/yaml": "^7.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^12.0",
+    "squizlabs/php_codesniffer": "*"
+  }
+}
